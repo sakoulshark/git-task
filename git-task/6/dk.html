@@ -8,12 +8,17 @@
     <title>Document</title>
 </head>
 <style>
+    body {
+        flex-direction: row;
+    }
+
     .c {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         border: 1px;
         background-color: aqua;
+        position: relative;
     }
 
     .a {
@@ -22,6 +27,7 @@
         border-radius: 50%;
         border: 1px;
         background-color: rgb(20, 22, 22);
+        position: relative;
     }
 
     .b {
@@ -30,12 +36,15 @@
         border-radius: 50%;
         border: 1px;
         background-color: rgb(255, 0, 212);
+        position: relative;
     }
 </style>
 
 <body>
     <div class="c"></div>
+
     <div class="a"></div>
+
     <div class="b"></div>
 </body>
 <script>
@@ -50,7 +59,6 @@
         return new Promise((resolve) => {
             clearInterval(el.timer);
             el.timer = setInterval(() => {
-                //边界
                 if (Math.abs(now - val) == 0) {
                     clearInterval(el.timer);
                     resolve();//执行成功拿到结果后执行的回调函数
@@ -62,9 +70,21 @@
             }, 20);
         });
     }
-    let a = document.querySelector('.a');
-    let b = document.querySelector('.b');
-    let c = document.querySelector('.c');
+    {
+        let a = document.querySelector('.a');
+        let b = document.querySelector('.b');
+        let c = document.querySelector('.c');
+        function circleMove() {
+            move(c, "left", 300).then(() => {
+                return move(b, "left", 300);
+            }).then(() => {
+                return move(a, "left", 300);
+            }).then(() => {
+                circleMove();
+            });
+        }
+        circleMove();
+    }
 
 
 </script>
