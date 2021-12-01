@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    span{
-    background-color: black;}
-
-        
+        span {
+            background-color: black;
+        }
     </style>
 </head>
 
-<body >
+<body>
     <p>我用什么才能留住你</p>
     <p>我用什么才能留住你</p>
     <p>我给你瘦落的街道、<span id="span">绝望的落日</span>、荒郊的月亮。</p>
@@ -27,20 +26,21 @@
     <p>我给你我设法保全的我自己的<span id="span">核心</span>——不营字造句，不和梦交易，不被时间、欢乐和<span id="span">逆境</span>触动的核心。</p>
     <p>我给你早在你出生前多年的一个傍晚看到的一朵<span id="span">黄玫瑰</span>的记忆。</p>
     <p>我给你关于你<span id="span">生命</span>的诠释，关于你自己的理论，你的真实而惊人的存在。</p>
-    <p>我给你我的寂寞、我的黑暗、我心的饥渴；我试图用困惑、<span  id="span">危险</span>、失败来打动你。</p>
-<button id="btn" onclick="changeColor();">ccc</button>
-    <script type="text/javascript"> 
-function changeColor(){
-    var a=document.querySelectorAll("span");   
-    for(var i=0;i<a.length;i++){
-        if(a[i].style.backgroundColor=="black"){
-            a[i].style.backgroundColor="white";}
-         else{a[i].style.backgroundColor="black";}       
-    }
-}    
+    <p>我给你我的寂寞、我的黑暗、我心的饥渴；我试图用困惑、<span id="span">危险</span>、失败来打动你。</p>
+    <button id="btn" onclick="changeColor();">ccc</button>
+    <script type="text/javascript">
+        function changeColor() {
+            var a = document.querySelectorAll("span");
+            for (var i = 0; i < a.length; i++) {
+                if (a[i].style.backgroundColor == "black") {
+                    a[i].style.backgroundColor = "white";
+                }
+                else { a[i].style.backgroundColor = "black"; }
+            }
+        }
 
     </script>
-        
+
 </body>
 
 </html>

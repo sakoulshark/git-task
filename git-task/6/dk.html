@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .c {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px;
+        background-color: aqua;
+    }
+
+    .a {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px;
+        background-color: rgb(20, 22, 22);
+    }
+
+    .b {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px;
+        background-color: rgb(255, 0, 212);
+    }
+</style>
+
+<body>
+    <div class="c"></div>
+    <div class="a"></div>
+    <div class="b"></div>
+</body>
+<script>
+
+    function move(el, attr, val) {
+        let now = parseFloat(getComputedStyle(el)[attr]);//当前值
+
+        // val-now可能为正也可能为负，除以绝对值，得到1或-1来表示方向  
+        let speed = (val - now) / Math.abs(val - now) * 2;//方向与速度   
+
+        //返回一个Promise对象
+        return new Promise((resolve) => {
+            clearInterval(el.timer);
+            el.timer = setInterval(() => {
+                //边界
+                if (Math.abs(now - val) == 0) {
+                    clearInterval(el.timer);
+                    resolve();//执行成功拿到结果后执行的回调函数
+                } else {
+                    now += speed;
+                    el.style[attr] = now + "px";
+                    // console.log(now);//测试
+                }
+            }, 20);
+        });
+    }
+    let a = document.querySelector('.a');
+    let b = document.querySelector('.b');
+    let c = document.querySelector('.c');
+
+
+</script>
+
+</html>

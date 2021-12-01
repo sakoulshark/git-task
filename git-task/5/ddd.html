@@ -7,31 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lv2</title>
 </head>
-<script type="text/javascript"> 
-    function setAll(){
-        var a=document.getElementsByName("aaa");
-        for(var i=0;i<a.length;i++){
-            a[i].checked=true;
+<script type="text/javascript">
+    function setAll() {
+        var a = document.getElementsByName("aaa");
+        for (var i = 0; i < a.length; i++) {
+            a[i].checked = true;
         }
     }
-    function setNone(){
-        var b=document.getElementsByName("aaa");
-        for(var i=0;i<b.length;i++){
-            b[i].checked=false;
+    function setNone() {
+        var b = document.getElementsByName("aaa");
+        for (var i = 0; i < b.length; i++) {
+            b[i].checked = false;
         }
     }
-    function setBack(){
-     var c=document.getElementsByName("aaa");
-     for(var i=0;i<c.length;i++){
-         if(c[i].checked==true){
-         c[i].checked=false;
+    function setBack() {
+        var c = document.getElementsByName("aaa");
+        for (var i = 0; i < c.length; i++) {
+            if (c[i].checked == true) {
+                c[i].checked = false;
+            }
+            else {
+                c[i].checked = true;
+            }
         }
-       else{
-           c[i].checked=true;
-    }  
-     }
-      }   
-    
+    }
+
 </script>
 
 <body>
@@ -47,8 +47,8 @@
         <input type="checkbox" value="拼命内卷" name="aaa">拼命内卷
         <input type="checkbox" value="使劲内卷" name="aaa">使劲内卷
         <br />
-        <input type="button" value="全选"  onclick="setAll();"/>
-        <input type="button" value="全不选" onclick="setNone();"/>
+        <input type="button" value="全选" onclick="setAll();" />
+        <input type="button" value="全不选" onclick="setNone();" />
         <input type="button" value="反选" onclick="setBack();">
     </div>
 
