@@ -31,8 +31,8 @@
     <script type="text/javascript">
         function changeColor() {
             var a = document.querySelectorAll("span");
-            for (var i = 0; i < a.length; i++) {
-                if (a[i].style.backgroundColor == "black") {
+            for (let i = 0; i < a.length; i++) {
+                if (window.getComputedStyle(a[i]).getPropertyValue('background-color') == 'black') {
                     a[i].style.backgroundColor = "white";
                 }
                 else { a[i].style.backgroundColor = "black"; }

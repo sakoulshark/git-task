@@ -13,15 +13,15 @@
     }
 
     .c {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         border: 1px;
         background-color: aqua;
         position: relative;
     }
 
-    .a {
+    .b {
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -30,7 +30,7 @@
         position: relative;
     }
 
-    .b {
+    .a {
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -43,49 +43,70 @@
 <body>
     <div class="c"></div>
 
-    <div class="a"></div>
-
     <div class="b"></div>
+
+    <div class="a"></div>
 </body>
 <script>
 
     function move(el, attr, val) {
-        let now = parseFloat(getComputedStyle(el)[attr]);//当前值
-
-        // val-now可能为正也可能为负，除以绝对值，得到1或-1来表示方向  
-        let speed = (val - now) / Math.abs(val - now) * 2;//方向与速度   
-
-        //返回一个Promise对象
+        let now = parseFloat(getComputedStyle(el)[attr]);
+        let speed = (val - now) / Math.abs(val - now) * 2;
         return new Promise((resolve) => {
             clearInterval(el.timer);
             el.timer = setInterval(() => {
                 if (Math.abs(now - val) == 0) {
                     clearInterval(el.timer);
-                    resolve();//执行成功拿到结果后执行的回调函数
+                    resolve();
                 } else {
                     now += speed;
                     el.style[attr] = now + "px";
-                    // console.log(now);//测试
                 }
             }, 20);
         });
     }
     {
+        let sleep = function (time) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, time)
+            }
+            )
+        }
         let a = document.querySelector('.a');
         let b = document.querySelector('.b');
         let c = document.querySelector('.c');
-        function circleMove() {
-            move(c, "left", 300).then(() => {
-                return move(b, "left", 300);
-            }).then(() => {
-                return move(a, "left", 300);
-            }).then(() => {
-                circleMove();
-            });
-        }
-        circleMove();
-    }
+        // function circleMove() {
+        //     move(c, "left", 300).then(() => {
+        //         return move(b, "left", 300);
+        //     }).then(() => {
+        //         return move(a, "left", 300);
+        //     }).then(() => {
+        //         circleMove();
+        //     });
+        // }
+        // circleMove();
+        async function cMove() {
+            move(a, "left", 200);
+            await sleep(2000)
+            move(a, "top", 140);
+            move(b, "left", 200)
+            await sleep(2000)
+            move(c, "left", 200)
+            move(b, "top", 200)
+            move(a, "left", 0);
+            await sleep(2000)
+            move(a, "top", -60)
+            move(c, "top", 320)
+            move(b, "left", 0);
+            await sleep(2000)
+            move(b, "top", 0)
+            move(c, "left", 0).then(() => {
+                move(c, "top", 60)
+            })
+            cMove()
+        } cMove()
 
+    }
 
 </script>
 
